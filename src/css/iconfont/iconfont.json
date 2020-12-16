@@ -1,0 +1,65 @@
+{
+  "id": "1617635",
+  "name": "HuanTing",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "6265236",
+      "name": "发送",
+      "font_class": "send-line",
+      "unicode": "e652",
+      "unicode_decimal": 58962
+    },
+    {
+      "icon_id": "11904896",
+      "name": "emotion",
+      "font_class": "emotion",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "12186465",
+      "name": "house",
+      "font_class": "house",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "12703571",
+      "name": "qq",
+      "font_class": "qq",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "12818657",
+      "name": "lock",
+      "font_class": "lock",
+      "unicode": "e7e5",
+      "unicode_decimal": 59365
+    },
+    {
+      "icon_id": "12818670",
+      "name": "search",
+      "font_class": "search",
+      "unicode": "e7e6",
+      "unicode_decimal": 59366
+    },
+    {
+      "icon_id": "12823355",
+      "name": "24_留言",
+      "font_class": "_liuyan",
+      "unicode": "e658",
+      "unicode_decimal": 58968
+    },
+    {
+      "icon_id": "12823359",
+      "name": "24_时间",
+      "font_class": "_shijian",
+      "unicode": "e659",
+      "unicode_decimal": 58969
+    }
+  ]
+}
