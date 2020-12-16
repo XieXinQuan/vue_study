@@ -10,8 +10,8 @@
       </el-table>
     <transition name="fade" enter-active-class="animated bounce" leave-active-class="animated fadeOutUp">
       <el-dialog :title="title" :modal=false
-                 :close-on-click-modal="true"
-                 v-if='isShowShop'
+                 :close-on-click-modal="false"
+                 v-if='isShowShop' :show-close="false"
                  :visible.sync="isShowShop" width="30%" @close="closeShop">
         <el-form :model="form" ref="form">
             <transition name="fade" enter-active-class="animated fadeInDown" leave-active-class="animated fadeOutUp">
@@ -22,8 +22,6 @@
            </transition>
           <transition name="fade" enter-active-class="animated fadeInDown" leave-active-class="animated fadeOutUp">
             <el-form-item v-show="show.isShowShopManager">
-                <!-- <el-input v-model="form.shopManager" placeholder="经 理" prefix-icon="el-icon-message" auto-complete="off">
-                </el-input> -->
                 <el-autocomplete
                   v-model="state"
                   :fetch-suggestions="querySearchAsync"
@@ -64,32 +62,21 @@ export default {
       show: {isShowShopName : false, isShowShopManager: false, isShowShopLocation: false},
       form: {shopName : '', shopManager: '', shopManagerId: '', location: ''},
       state: '',
+      timeShow: 800
     }
   }, 
   methods: {
     showShop(){
       this.isShowShop = true
-      setTimeout(()=>{
-        this.show.isShowShopName = true
-        setTimeout(()=>{
-        this.show.isShowShopManager = true
-        setTimeout(()=>{
-          this.show.isShowShopLocation = true
-        }, 800);
-        }, 800);
-        }, 800);
+      setTimeout(()=>{this.show.isShowShopName = true}, this.timeShow)
+      setTimeout(()=>{this.show.isShowShopManager = true}, this.timeShow*2)
+      setTimeout(()=>{this.show.isShowShopLocation = true}, this.timeShow*3)
     },
     closeShop(){
       this.show.isShowShopLocation = false
-      setTimeout(()=>{
-      this.show.isShowShopManager = false
-      setTimeout(()=>{
-        this.show.isShowShopName = false
-      setTimeout(()=>{
-        this.isShowShop = false
-      }, 800);
-      }, 800);
-      }, 800);
+      setTimeout(()=>{this.show.isShowShopManager = false}, this.timeShow);
+      setTimeout(()=>{this.show.isShowShopName = false}, this.timeShow*2);
+      setTimeout(()=>{this.isShowShop = false}, this.timeShow*3);
     },
     showForm(){
     },
@@ -109,7 +96,7 @@ export default {
       axios.get('/user/searchUserByName?name=' + queryString).then(response => {
         var data = []
         for (var i = 0; i < response.length; i++){
-          var da = {'value' : response[i].nickName, 'id' : response[i].id};
+          var da = {'value' : response[i].name, 'id' : response[i].id};
           data.push(da)
         }
         cb(data)

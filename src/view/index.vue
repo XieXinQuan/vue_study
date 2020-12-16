@@ -24,7 +24,12 @@
             <el-link @click="showRouter('shopEmployee')" type="primary" class="rightMargin">店铺职员</el-link>
             <el-link @click="showRouter('dish')" type="primary" class="rightMargin">店铺菜品</el-link>
           </el-col>
-          <el-col :span="8" class="full-height" style="text-align: right; font-size: 1.2em; cursor:pointer"><span @mouseover="$store.state.rightMenu = true; $store.state.coverUpLayer = true" style="color: #409EFF;font-size: 1em;font-family: 'Avenir', Helvetica, Arial, sans-serif;">我的</span></el-col>
+          <el-col :span="8" class="full-height" style="text-align: right; font-size: 1.2em; cursor:pointer">
+            <span @mouseover="$store.state.rightMenu = true; $store.state.coverUpLayer = true" 
+              style="color: #409EFF;font-size: 1em;font-family: 'Avenir', Helvetica, Arial, sans-serif;">
+               我的
+              </span>
+          </el-col>
         </el-row>
       </el-header>
       <el-main>
@@ -36,7 +41,8 @@
     </el-container>
 
     <div v-if='$store.state.coverUpLayer'
-                 :visible.sync="$store.state.coverUpLayer" @click="closeLeftRightMenu" style="position: absolute; top:0px; left:0px; width:100%; height:100%; zIndex: 888;">
+                 :visible.sync="$store.state.coverUpLayer" @click="closeLeftRightMenu"
+                  style="position: absolute; top:0px; left:0px; width:100%; height:100%; zIndex: 888;">
     </div>
 
     <transition  name="fade" enter-active-class="animated fadeInLeft" leave-active-class="animated slideOutLeft">
@@ -49,7 +55,7 @@
     <div v-if='$store.state.rightMenu'
                  :visible.sync="$store.state.rightMenu" style="position: absolute; top:0px; right:0px; width:15%; height:50%; background-color: #DCDFE6; zIndex:999">
       <div>个人中心</div>
-      <table style="width: 100%; margin-top: 1em">
+      <table style="width: 100%; margin-top: 1em" @mousemove="extensionAside('right')">
         <tr><td>登录账号:</td><td>{{userInfo.loginName}}</td></tr>
         <tr><td>昵称:</td><td>{{userInfo.nickName}}</td></tr>
         <tr><td>性别:</td><td>{{userInfo.sex}}</td></tr>
@@ -134,7 +140,7 @@ export default {
     }else{
       
       axios.get('/user/info').then(response => {
-        Notification.success({'title': '成功', 'message' : '欢迎您 : ' + response.nickName})
+        Notification.success({'title': '成功', 'message' : '欢迎您 : ' + response.nickName, position: 'bottom-right'})
         // Message.success('欢迎您 : ' + response.nickName)
         this.userInfo = response
       })
