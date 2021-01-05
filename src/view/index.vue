@@ -1,23 +1,10 @@
 <template>
 
   <div class="hello" id="app" :style="ditu">
-    <login></login>
-    <el-drawer
-      title="我是标题"
-      :with-header="false"
-      size="15%"
-      :visible.sync="leftDrawer"
-      direction="ltr">
-      <span>左侧菜单</span>
-    </el-drawer>
-    <el-container style="opacity:0.8;">
+    <el-container style="opacity: 0.8;">
       <el-header class="full-height" height="2em">
         <el-row class="full-height">
           <el-col :span="8" class="full-height">
-            <span @mouseover="leftDrawer = true">
-            <!-- <span @mouseover="$store.state.leftMenu = true; $store.state.coverUpLayer = true"> -->
-              <svg t="1607432139828" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1080" data-spm-anchor-id="a313x.7781069.0.i1" width="32" height="32"><path d="M972.8 153.6H51.2a51.2 51.2 0 0 0 0 102.4h921.6a51.2 51.2 0 0 0 0-102.4zM972.8 473.6H51.2a51.2 51.2 0 0 0 0 102.4h921.6a51.2 51.2 0 0 0 0-102.4zM972.8 793.6H51.2a51.2 51.2 0 0 0 0 102.4h921.6a51.2 51.2 0 0 0 0-102.4z" p-id="1081" data-spm-anchor-id="a313x.7781069.0.i2" class="selected"></path></svg>
-            </span>
           </el-col>
           <el-col :span="8" class="full-height" style="text-align: center">
             <el-link @click="showRouter('shop')" type="primary" class="rightMargin">店铺管理</el-link>
@@ -32,11 +19,13 @@
           </el-col>
         </el-row>
       </el-header>
-      <el-main>
-        <transition name="fade" enter-active-class="animated fadeInDown">
-          <router-view/>
-        </transition>
-      </el-main>
+      <!-- <el-scrollbar> -->
+        <el-main>
+          <transition name="fade" enter-active-class="animated fadeInDown">
+            <router-view/>
+          </transition>
+        </el-main>
+      <!-- </el-scrollbar> -->
       <el-footer height="2em"><el-link href="http://beian.miit.gov.cn" type="primary">桂ICP备2020009852号</el-link></el-footer>
     </el-container>
 
@@ -76,19 +65,19 @@ import { Message } from 'element-ui';
 import axios from 'axios'
 import { Notification } from 'element-ui';
 
-import login from '../components/login'
+// import login from '../components/login'
 
 export default {
 
   name: 'index',
   
 
-  components: {
-    login
-  },
+  // components: {
+  //   login
+  // },
   data () {
     return {
-      ditu: {backgroundImage: "url(" + require("../assets/ditu2.jpg") + ")", backgroundRepeat: "no-repeat",
+      ditu: {backgroundImage: "url(" + require("../assets/ditu5.jpg") + ")", backgroundRepeat: "no-repeat",
             backgroundSize: "100% 100%", zIndex: "-1"},
       isCollapse: false,
       isShowCard: false,

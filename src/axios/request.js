@@ -5,17 +5,12 @@ import { Message } from 'element-ui'
 // import store from '../vuex/store'
 // import router from 'vue-router'
 
-// axios.defaults.baseURL = "http://localhost:2222/"
+axios.defaults.baseURL = "http://localhost:2222"
 
 axios.defaults.withCredentials = true
 
 axios.interceptors.request.use(config => {
-    if (config.method === 'post'){
-
-        // ? config.data = config.data
-        // : config.params = {...config.params};
-    }
-    config.headers['Content-Type'] = 'application/json';
+    config.headers['Content-Type'] = 'application/json;charset=UTF-8';
     config.headers['token'] = typeof (localStorage.token) == 'undefined' ? '' : localStorage.token
     return config;
   }, error => {
